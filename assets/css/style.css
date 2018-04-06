@@ -1,10 +1,13 @@
 .jumbotron{
     background-color: #b1a6c1;
     color:#fff;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family: 'Berkshire Swash', cursive;
 }
 body{
     background-color:#958ca3;
+}
+.card{
+    border-radius:0;
 }
 .card-deck{
     margin:5%;
@@ -13,14 +16,27 @@ body{
 .collection-chest{
     border:solid 10px #fff;
 }
+.score-area{
+    background-color:#cfedf7;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 .card-footer{
     margin-top:5%;
-    color:#fff;
-    background-color:#8b9bb5;
+    color:#666;
+    background-color:#d4cbdb;
+    font-family: 'Berkshire Swash', cursive;
 }
 a{
-    color:#fff;
+    color:#666;
 }
 .start-game{
     margin:5% 0 5% 0;
+    background-color: #85bfae;
+    color:#fff;
 }
+.instructions{
+    background-color:#d4cbdb;
+    color:#666;
+}
+
+
