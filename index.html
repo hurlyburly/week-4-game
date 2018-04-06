@@ -1,0 +1,155 @@
+<!-- 2. The player will have to guess the answer, just like in Hangman. This time, though, the player will guess with numbers instead of letters. 
+
+3. Here's how the app works:
+
+   * There will be four crystals displayed as buttons on the page.
+
+   * The player will be shown a random number at the start of the game.
+
+   * When the player clicks on a crystal, it will add a specific amount of points to the player's total score. 
+
+     * Your game will hide this amount until the player clicks a crystal.
+     * When they do click one, update the player's score counter.
+
+   * The player wins if their total score matches the random number from the beginning of the game.
+
+   * The player loses if their score goes above the random number.
+
+   * The game restarts whenever the player wins or loses.
+
+     * When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
+
+   * The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
+
+##### Option 1 Game design notes
+
+* The random number shown at the start of the game should be between 19 - 120.
+
+* Each crystal should have a random hidden value between 1 - 12.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crystal Collector</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link>
+
+</head>
+
+<body>
+    <!-- buttons for instructions :
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button> -->
+
+    <!-- Header -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Crystal Collector</h1>
+            <p class="lead"> Can you match the wizard and keep your collection?</p>
+            <p>
+
+                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Instructions
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica,
+                    craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Container of all other elements -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-8">
+
+                <div class="card-deck">
+                    <div class="card">
+                        <button type="button" class="btn blue-crystal">
+                            <img class="card-img-top" src="assets/images/blue-crystals.png" alt="Card image cap">
+                        </button>
+                    </div>
+                    <div class="card">
+                        <button type="button" class="btn orange-crystal">
+                            <img class="card-img-top" src="assets/images/orange-crystals.png" alt="Card image cap">
+                        </button>
+                    </div>
+                    <div class="card">
+                        <button type="button" class="btn green-crystal">
+                            <img class="card-img-top" src="assets/images/green-crystals.png" alt="Card image cap">
+                        </button>
+                    </div>
+                    <div class="card">
+                        <button type="button" class="btn red-crystal">
+
+                            <img class="card-img-top" src="assets/images/red-crystals.png" alt="Card image cap">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card collection-chest">
+                    <img class="card-img-top " src="assets/images/chest.png" alt="Card image cap">
+                </div>
+            </div>
+            <div class="col-md-4">
+
+                <button class="btn btn-secondary start-game" type="button">
+                    Start Game
+                </button>
+
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header wizardzx" zx>The Wizard:</div>
+                    <img class="card-img-bottom" src="http://via.placeholder.com/350x150" alt="Card image cap">
+                </div>
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Your Score:</div>
+
+                </div>
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Wins:</div>
+                    <div class="card-header">Losses:</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Will you win the crystals or will you lose them all?</h5>
+                        <img class="card-img-bottom" src="http://via.placeholder.com/350x150" alt="Card image cap">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="card-footer text-center">
+        Thanks for playing! If you'd like to play other games try:
+        <a href="https://hurlyburly.github.io/Hangman-Game/">Hangman
+        </a>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="assets/javascript/game.js"></script>
+</body>
+
+</html>

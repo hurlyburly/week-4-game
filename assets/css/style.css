@@ -1,0 +1,26 @@
+.jumbotron{
+    background-color: #b1a6c1;
+    color:#fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+body{
+    background-color:#958ca3;
+}
+.card-deck{
+    margin:5%;
+    
+}
+.collection-chest{
+    border:solid 10px #fff;
+}
+.card-footer{
+    margin-top:5%;
+    color:#fff;
+    background-color:#8b9bb5;
+}
+a{
+    color:#fff;
+}
+.start-game{
+    margin:5% 0 5% 0;
+}
