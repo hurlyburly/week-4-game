@@ -12,7 +12,7 @@
 //global variables
 var wins = 0;
 var losses = 0;
-var game = false;
+var game = true;
 var wizardScore = 0;
 var playerScore = 0;
 var crystal = {
@@ -34,7 +34,6 @@ var crystal = {
 // }
 //start game code
 function startGame() {
-  game = true;
   wizardScore = Math.floor(Math.random() * (120 - 19) + 19);
   playerScore = 0;
   crystal["red-crystal"] = Math.floor(Math.random() * 12 + 1);
@@ -43,38 +42,47 @@ function startGame() {
   crystal["orange-crystal"] = Math.floor(Math.random() * 12 + 1);
   $(".wizard").html("The Wizard: " + "<b>" + wizardScore + "</b>");
   $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
+  
 }
 
 //winning game code
 function winGame() {
   wins++;
   $(".wins").html("Wins: " + "<b>" + wins + "</b>");
-  $(".responses").text("You win!");
+  $(".responses").text("You win! Alas, it's the 21st century and Delilah is not interested in you. She's run off to go to business school.");
 }
 //losing game code
 function loseGame() {
   losses++;
   $(".losses").html("Losses: " + "<b>" + losses + "</b>");
-  $(".responses").text("You lose!");
+  $(".responses").text("You lose! Also, Delilah's found out about the whole thing and has rained down fury on everyone involved. Maybe you should rethink your life choices.");
 }
 
-//logic of the game
+$(".new-game").on("click", function() {
+    $(".wins").html("Wins: " + "<b>" + wins + "</b>");
+    $(".losses").html("Losses: " + "<b>" + losses + "</b>");
+    startGame();
+
+  });
+  //logic of the game
   $(".crystal").on("click", function() {
-    if (playerScore == wizardScore) {
-      winGame();
-    } else {
-      if (playerScore < wizardScore) {
         var assignedValue = crystal[$(this).attr("id")];
         playerScore = playerScore + assignedValue;
         $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
+
+    if (playerScore == wizardScore) {
+      winGame();
+      startGame();
+    } else {
+      if (playerScore < wizardScore) {
+        
       } else {
         loseGame();
+        startGame();
       }
     }
-  });
+  }).animate(this.effect("animated bounce"));
 
-  $(".start-game").on("click", function() {
-    startGame();
-  });
+  
 
 //starting the game

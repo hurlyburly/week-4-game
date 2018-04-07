@@ -27,14 +27,18 @@ body{
 a{
     color:#666;
 }
-.start-game{
+.new-game{
     margin:5% 0 5% 0;
-    background-color: #85bfae;
+    background-color:#c6bf61;
     color:#fff;
 }
 .instructions{
     background-color:#d4cbdb;
     color:#666;
+}
+.instruction{
+    background-color: #c6bf61;
+    color:#fff;
 }
 
 
