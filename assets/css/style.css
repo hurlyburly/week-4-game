@@ -1,10 +1,10 @@
 .jumbotron{
     background-color: #b1a6c1;
     color:#fff;
-    font-family: 'Berkshire Swash', cursive;
 }
 body{
     background-color:#958ca3;
+    font-family: 'Lora', serif;
 }
 .card{
     border-radius:0;
@@ -17,14 +17,12 @@ body{
     border:solid 10px #fff;
 }
 .score-area{
-    background-color:#cfedf7;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color:#d4cbdb;
 }
 .card-footer{
     margin-top:5%;
     color:#666;
     background-color:#d4cbdb;
-    font-family: 'Berkshire Swash', cursive;
 }
 a{
     color:#666;
