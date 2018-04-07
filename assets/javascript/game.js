@@ -8,77 +8,97 @@
 // * The game restarts whenever the player wins or loses.
 //   * When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
 // * The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
-// * The random number shown at the start of the game should be between 19 - 120.
-// *  Each crystal should have a random hidden value between 1 - 12.
 
 //global variables
-var wizardScore = [Math.floor(Math.random() * (120 - 19) + 19)];
+var wins;
+var losses;
+var game = false;
+var wizardScore = Math.floor(Math.random() * (120 - 19) + 19);
 var playerScore = 0;
 var blueCrystal = Math.floor(Math.random() * 12 + 1);
 var orangeCrystal = Math.floor(Math.random() * 12 + 1);
 var greenCrystal = Math.floor(Math.random() * 12 + 1);
 var redCrystal = Math.floor(Math.random() * 12 + 1);
-var wins;
-var losses;
-var game = false;
-
 //List of functions to call
 //update player score
+
 function collectCrystals() {
+    
   $(".blue-crystal").on("click", function() {
-    playerScore = playerScore + blueCrystal;
+    Math.floor(Math.random() * 12 + 1);
+    playerScore =playerScore + blueCrystal;
   });
+  $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
+
   $(".orange-crystal").on("click", function() {
-    playerScore = playerScore + orangeCrystal;
+    score = playerScore + orangeCrystal;
   });
+  $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
+
   $(".green-crystal").on("click", function() {
     playerScore = playerScore + greenCrystal;
   });
+  $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
+
   $(".red-crystal").on("click", function() {
     playerScore = playerScore + redCrystal;
   });
+  $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
 }
+
 //start game code
 function startGame() {
+  wizardScore = Math.floor(Math.random() * (120 - 19) + 19);
+  playerScore = 0;
+  blueCrystal = Math.floor(Math.random() * 12);
+  orangeCrystal = Math.floor(Math.random() * 12);
+  greenCrystal = Math.floor(Math.random() * 12);
+  redCrystal = Math.floor(Math.random() * 12);
+
   $(".start-game").on("click", function() {
     game = true;
   });
-  $(".wizard").html = "Wizard: " + wizardNumber;
+  $(".wizard").html("The Wizard: " + "<b>" + wizardScore + "</b>");
+  $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
 }
 
 //winning game code
 function winGame() {
   wins++;
-  $("wins").append("Wins: " + wins);
-  gameStart = false;
+  $("wins").html("Wins: " + wins);
+  $("responses").text("You win!");
+  wizardScore = 0;
+  playerScore = 0;
 }
 //losing game code
 function loseGame() {
   losses++;
-  $("losses").append("Losses: " + losses);
-  gameStart = false;
+
+  $("losses").html("Losses: " + losses);
+  $("responses").text("You lose!");
+  wizardScore = 0;
+  playerScore = 0;
 }
 
 //logic of the game
 
 function gameLogic() {
-  if (playerScore !== wizardScore) {
-    if (playerScore > wizardScore) {
-      loseGame();
-    } else {
-      collectCrystals();
-    }
-  } else {
+  if (playerScore == wizardScore) {
     winGame();
+  } else {
+    if (playerScore < wizardScore) {
+      collectCrystals();
+      console.log("player score:" + playerScore);
+    } else {
+      loseGame();
+    }
   }
 }
-
 //starting the game
 $(document).on("click", function() {
   if (game) {
     gameLogic();
   } else {
     startGame();
-    wizardScore();
   }
 });
