@@ -14,7 +14,7 @@ var wins = 0;
 var losses = 0;
 var game = false;
 var wizardScore = 0;
-var playerScore;
+var playerScore = 0;
 var crystal = {
   "red-crystal": 0,
   "blue-crystal": 0,
@@ -25,66 +25,56 @@ var crystal = {
 //List of functions to call
 //update player score
 
-function collectCrystals() {
-  $(".crystal").on("click",
-    function() {
-      var assignedValue = crystal[$(this).attr("id")];     
-      playerScore = playerScore + assignedValue;
-      $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
-    });
-  }
+// function collectCrystals() {
+//   $(".crystal").on("click", function() {
+//     var assignedValue = crystal[$(this).attr("id")];
+//     playerScore = playerScore + assignedValue;
+//     $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
+//   });
+// }
 //start game code
 function startGame() {
   game = true;
   wizardScore = Math.floor(Math.random() * (120 - 19) + 19);
   playerScore = 0;
-  crystal["red-crystal"] = Math.floor(Math.random() * 12+1);
-  crystal["blue-crystal"] = Math.floor(Math.random() * 12+1);
-  crystal["green-crystal"] = Math.floor(Math.random() * 12+1);
-  crystal["orange-crystal"] = Math.floor(Math.random() * 12+1);
+  crystal["red-crystal"] = Math.floor(Math.random() * 12 + 1);
+  crystal["blue-crystal"] = Math.floor(Math.random() * 12 + 1);
+  crystal["green-crystal"] = Math.floor(Math.random() * 12 + 1);
+  crystal["orange-crystal"] = Math.floor(Math.random() * 12 + 1);
   $(".wizard").html("The Wizard: " + "<b>" + wizardScore + "</b>");
   $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
 }
 
 //winning game code
 function winGame() {
-  $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
   wins++;
-  $(".wins").html("Wins: "+ "<b>"+wins+"</b>");
+  $(".wins").html("Wins: " + "<b>" + wins + "</b>");
   $(".responses").text("You win!");
-  wizardScore = 0;
-  playerScore = 0;
 }
 //losing game code
 function loseGame() {
   losses++;
-  $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
-  $(".losses").html("Losses: "+ "<b>"+losses+"</b>");
+  $(".losses").html("Losses: " + "<b>" + losses + "</b>");
   $(".responses").text("You lose!");
-  wizardScore = 0;
-  playerScore = 0;
 }
 
 //logic of the game
-
-function gameLogic() {
-  if (playerScore == wizardScore) {
-    winGame();
-  } else {
-    if (playerScore < wizardScore) {
-      collectCrystals();
-      console.log("Your Score:" + playerScore);
+  $(".crystal").on("click", function() {
+    if (playerScore == wizardScore) {
+      winGame();
     } else {
-      collectCrystals();
-      loseGame();
+      if (playerScore < wizardScore) {
+        var assignedValue = crystal[$(this).attr("id")];
+        playerScore = playerScore + assignedValue;
+        $(".player-score").html("Your Score: " + "<b>" + playerScore + "</b>");
+      } else {
+        loseGame();
+      }
     }
-  }
-}
-//starting the game
-$(".start-game").on("click", function() {
-  if (game) {
-    gameLogic();
-  } else {
+  });
+
+  $(".start-game").on("click", function() {
     startGame();
-  }
-});
+  });
+
+//starting the game
